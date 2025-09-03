@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hospital Bill Generator</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-5">
+  <h2 class="mb-4">Hospital Bill Generator</h2>
+  <form action="/generate-bill" method="POST">
+    <div class="mb-3">
+      <label>Patient Name:</label>
+      <input type="text" name="patient" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label>Age:</label>
+      <input type="number" name="age" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label>Date:</label>
+      <input type="date" name="date" class="form-control" required>
+    </div>
+    <h5>Treatments</h5>
+    <div id="treatments">
+      <div class="row mb-2">
+        <div class="col">
+          <input type="text" name="treatment" class="form-control" placeholder="Treatment" required>
+        </div>
+        <div class="col">
+          <input type="number" name="cost" class="form-control" placeholder="Cost" required>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="btn btn-secondary mb-3" onclick="addTreatment()">+ Add More</button>
+    <br>
+    <button type="submit" class="btn btn-primary">Generate Bill</button>
+  </form>
+
+  <script>
+    function addTreatment() {
+      const div = document.createElement('div');
+      div.classList.add('row', 'mb-2');
+      div.innerHTML = `
+        <div class="col">
+          <input type="text" name="treatment" class="form-control" placeholder="Treatment" required>
+        </div>
+        <div class="col">
+          <input type="number" name="cost" class="form-control" placeholder="Cost" required>
+        </div>
+      `;
+      document.getElementById('treatments').appendChild(div);
+    }
+  </script>
+</body>
+</html>
